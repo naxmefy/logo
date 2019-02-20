@@ -1,0 +1,12 @@
+# binaries (libs, plugins, etc)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# test binaries (go test -c)
+*.test
+
+# output (LiteIDE?)
+*.out
