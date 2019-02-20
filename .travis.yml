@@ -8,7 +8,7 @@ script:
   - go test -v -covermode=count -coverprofile=coverage.out
 
 after_script:
-  - $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
+  - $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN ./...
 
 notifications:
   email:
