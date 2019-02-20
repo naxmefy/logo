@@ -1,14 +1,15 @@
 language: go
 
 before_script:
-  - go get golang.org/x/tools/cmd/cover
-  - go get github.com/mattn/goveralls
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
-  - go test -v -covermode=count -coverprofile=coverage.out ./...
+  - go test -v -coverprofile=coverage.out ./...
 
 after_script:
-  - $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
   email:
